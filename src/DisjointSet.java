@@ -8,17 +8,21 @@ public class DisjointSet {
         Arrays.fill(this.size, -1);
     }
 
-    // This is not smart union I don't think. I also don't think there is any path compression
     public void union(int root1, int root2) {
-        this.size[root2] = root1;
+        if (this.size[root1] < this.size[root2]) {
+            this.size[root2] = this.size[root1] + this.size[root2];
+            this.size[root1] = root2;
+        } else {
+            this.size[root1] = this.size[root1] + this.size[root2];
+            this.size[root2] = root1;
+        }
     }
 
-    // There might be an error if the node cannot be found in the find
     public int find(int node) {
         if (this.size[node] < 0) {
             return node;
         } else {
-            return find(this.size[node]);
+            return this.size[node] = find(this.size[node]);
         }
     }
 }

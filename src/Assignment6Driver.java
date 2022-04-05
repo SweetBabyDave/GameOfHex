@@ -9,7 +9,7 @@ public class Assignment6Driver {
         //System.out.println();
         //playGame("moves2.txt");
     }
-
+    
     private static void playGame(String filename) {
         File file = new File(filename);
         try (Scanner input = new Scanner(file)) {
