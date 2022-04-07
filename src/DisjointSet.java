@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class DisjointSet {
-    private final int[] size;
+    public final int[] size;
 
     public DisjointSet(int size) {
         this.size = new int[size];
@@ -24,5 +24,9 @@ public class DisjointSet {
         } else {
             return this.size[node] = find(this.size[node]);
         }
+    }
+
+    public int[] getSize() {
+        return this.size;
     }
 }
