@@ -5,23 +5,24 @@ public class Assignment6Driver {
     public static void main(String[] args) {
 
         testGame();
-//        playGame("moves1.txt");
-//        System.out.println();
-//        playGame("moves2.txt");
+        playGame("moves1.txt");
+        System.out.println();
+        playGame("moves2.txt");
     }
 
     private static void playGame(String filename) {
         File file = new File(filename);
         try (Scanner input = new Scanner(file)) {
             HexGame game = new HexGame(11);
-            while (input.hasNextLine()) {
+            while (input.hasNextInt()) {
                 int moveBlue = input.nextInt();
-                int moveRed = input.nextInt();
                 if (game.playBlue(moveBlue, false)) {
                     System.out.println("Blue wins with move at position " + moveBlue + "!");
                     printGrid(game);
                     return;
                 }
+
+                int moveRed = input.nextInt();
                 if (game.playRed(moveRed, false)) {
                     System.out.println("Red wins with move at position " + moveRed + "!");
                     printGrid(game);

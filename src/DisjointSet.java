@@ -9,11 +9,11 @@ public class DisjointSet {
     }
 
     public void union(int root1, int root2) {
-        if (this.size[root1] < this.size[root2]) {
-            this.size[root2] = this.size[root1] + this.size[root2];
+        if (this.size[root2] < this.size[root1]) {
+            this.size[root2] += this.size[root1];
             this.size[root1] = root2;
         } else {
-            this.size[root1] = this.size[root1] + this.size[root2];
+            this.size[root1] += this.size[root2];
             this.size[root2] = root1;
         }
     }
@@ -24,9 +24,5 @@ public class DisjointSet {
         } else {
             return this.size[node] = find(this.size[node]);
         }
-    }
-
-    public int[] getSize() {
-        return this.size;
     }
 }
